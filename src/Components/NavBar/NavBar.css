@@ -1,16 +1,19 @@
 .main-navbar-container {
   background-color: var(--blue);
   width: 100%;
-  min-height: 70px;
-  margin-bottom: 40px;
+  min-height: 60px;
+  margin-bottom: 20px;
   display: flex;
   border-bottom: 2px solid var(--darkblue);
 }
 
 #navbar {
   width: 75%;
+  font-size: 22px;
   margin: auto;
   display: flex;
+  align-items: center;
+
   justify-content: space-evenly;
 }
 
@@ -21,7 +24,7 @@
   left: -9.48px;
   top: -97.51px;
 
-  background: #e8ec2f;
+  background: var(--yellow);
   transform: rotate(45deg);
 }
 
@@ -32,7 +35,7 @@
   left: 42.41px;
   top: -117.25px;
 
-  background: #cd4b4b;
+  background: var(--red);
   border-right: 2px solid var(--darkred);
   transform: rotate(45deg);
 }

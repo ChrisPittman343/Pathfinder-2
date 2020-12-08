@@ -1,24 +1,50 @@
 .animated-btn {
   border: none;
-  padding: 4px 20px;
-  font-size: 27px;
-  background: rgba(0, 0, 0, 0);
-  transition: color;
-  transition-duration: 0.25s;
+  border-radius: 3px;
+  padding: 5px 5px;
+  font-size: inherit;
+  cursor: pointer;
+  max-height: 40px;
+}
+
+.red-btn {
+  background: var(--red);
+  box-shadow: 0 3px var(--darkred);
+}
+
+.red-btn:hover {
+  position: relative;
+  top: 1px;
+  box-shadow: 0 2px var(--darkred);
+}
+
+.yellow-btn {
+  background: var(--yellow);
+  box-shadow: 0 3px var(--darkyellow);
+}
+
+.yellow-btn:hover {
+  position: relative;
+  top: 1px;
+  box-shadow: 0 2px var(--darkyellow);
+}
+
+.blue-btn {
+  background: var(--blue);
+  box-shadow: 0 3px var(--darkblue);
+}
+
+.blue-btn:hover {
+  position: relative;
+  top: 1px;
+  box-shadow: 0 2px var(--darkblue);
 }
 
 .animated-btn:focus {
   outline: none;
 }
 
-.red-btn:hover {
-  color: var(--red);
-}
-
-.yellow-btn:hover {
-  color: var(--yellow);
-}
-
-.visualize {
-  border: 1px solid black;
+.animated-btn:active {
+  top: 3px;
+  box-shadow: none;
 }

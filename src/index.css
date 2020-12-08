@@ -2,9 +2,11 @@
   --blue: #3c90cc;
   --red: #cd4b4b;
   --yellow: #e8ec2f;
+  --green: #2fb12b;
   --darkblue: #2d6892;
   --darkred: #8a3434;
   --darkyellow: #b2b427;
+  --darkgreen: #248120;
 }
 
 * {
@@ -14,6 +16,7 @@
   box-sizing: border-box;
   color: #222222;
   font-size: large;
+  font-weight: bold;
 }
 
 html {

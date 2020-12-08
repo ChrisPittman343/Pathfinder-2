@@ -8,11 +8,13 @@ const Content = (props) => {
   return (
     <div className="main-content-container">
       <ContentButtons />
-      <Grid />
+      <Grid grid={props.grid} />
     </div>
   );
 };
 
-Content.propTypes = {};
+Content.propTypes = {
+  grid: PropTypes.array,
+};
 
 export default Content;

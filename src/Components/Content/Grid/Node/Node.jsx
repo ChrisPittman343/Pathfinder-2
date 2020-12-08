@@ -7,14 +7,14 @@ function Node(props) {
     return props.isStart ? "start-node" : "";
   };
 
-  return <div className={`node`}></div>;
+  return <td className={`node`}></td>;
 }
 
 Node.propTypes = {
-  weight: Number,
-  isStart: Boolean,
-  isEnd: Boolean,
-  isVisited: Boolean,
+  weight: PropTypes.number,
+  isStart: PropTypes.bool,
+  isEnd: PropTypes.bool,
+  isVisited: PropTypes.bool,
 };
 
 export default Node;

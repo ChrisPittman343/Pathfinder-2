@@ -6,9 +6,9 @@ import "./ContentButtons.css";
 function ContentButtons(props) {
   return (
     <div className="main-content-btns-container">
+      <Button color="blue">Content Button</Button>
       <Button color="red">Content Button</Button>
-      <Button color="red">Content Button</Button>
-      <Button color="red">Content Button</Button>
+      <Button color="blue">Content Button</Button>
     </div>
   );
 }

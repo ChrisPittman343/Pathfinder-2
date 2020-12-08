@@ -1,0 +1,17 @@
+.dropdown {
+  border: 1px solid white;
+  margin: auto 0;
+}
+
+.dropdown-options-menu {
+  z-index: 10;
+  outline: 1px solid black;
+  padding: 5px;
+  background: var(--blue);
+  position: absolute;
+  list-style: none;
+}
+
+.dropdown-opt {
+  padding: 4px 2px;
+}

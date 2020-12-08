@@ -20,23 +20,8 @@ export default class Container extends Component {
     return (
       <div className="main-container">
         <NavBar />
-        <Content />
-        {this.state.grid.map((row, rowIx) => {
-          return (
-            <div>
-              {row.map((col, colIx) => {
-                return (
-                  <Node
-                    key={`${rowIx}-${colIx}`}
-                    weight={col.weight}
-                    isStart={col.isStart}
-                    isEnd={col.isEnd}
-                  />
-                );
-              })}{" "}
-            </div>
-          );
-        })}
+        <Content grid={this.state.grid} />
+
         {/* Modals go here? */}
       </div>
     );
@@ -45,7 +30,7 @@ export default class Container extends Component {
 
 const getInitialGrid = () => {
   const grid = [];
-  for (let i = 0; i < 27; i++) {
+  for (let i = 0; i < 29; i++) {
     const row = [];
     for (let k = 0; k < 61; k++) {
       const node = {
