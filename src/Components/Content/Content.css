@@ -1,3 +1,4 @@
 .main-content-container {
-  background-color: #3c90cc;
+  background-color: var(--blue);
+  width: 100%;
 }

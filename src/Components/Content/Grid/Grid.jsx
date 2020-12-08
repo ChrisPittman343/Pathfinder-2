@@ -1,12 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import Node from "./Node/Node";
 
-export default class Grid extends Component {
-  static propTypes = {
-    prop: PropTypes,
-  };
-
-  render() {
-    return <div></div>;
-  }
+function Grid(props) {
+  return (
+    <div>
+      <Node />
+    </div>
+  );
 }
+
+Grid.propTypes = {
+  grid: "",
+};
+
+export default Grid;

@@ -1,3 +1,38 @@
 .main-navbar-container {
-  background-color: #cd4b4b;
+  background-color: var(--blue);
+  width: 100%;
+  min-height: 70px;
+  margin-bottom: 40px;
+  display: flex;
+  border-bottom: 2px solid var(--darkblue);
+}
+
+#navbar {
+  width: 75%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#yellow-stripe {
+  position: absolute;
+  width: 71.75px;
+  height: 145.93px;
+  left: -9.48px;
+  top: -97.51px;
+
+  background: #e8ec2f;
+  transform: rotate(45deg);
+}
+
+#red-stripe {
+  position: absolute;
+  width: 55.42px;
+  height: 278.22px;
+  left: 42.41px;
+  top: -117.25px;
+
+  background: #cd4b4b;
+  border-right: 2px solid var(--darkred);
+  transform: rotate(45deg);
 }

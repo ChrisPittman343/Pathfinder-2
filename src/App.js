@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import Container from "../src/Components/Container/Container";
 
 function App() {

@@ -1,0 +1,24 @@
+.animated-btn {
+  border: none;
+  padding: 4px 20px;
+  font-size: 27px;
+  background: rgba(0, 0, 0, 0);
+  transition: color;
+  transition-duration: 0.25s;
+}
+
+.animated-btn:focus {
+  outline: none;
+}
+
+.red-btn:hover {
+  color: var(--red);
+}
+
+.yellow-btn:hover {
+  color: var(--yellow);
+}
+
+.visualize {
+  border: 1px solid black;
+}

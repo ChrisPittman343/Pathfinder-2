@@ -1,10 +1,20 @@
+:root {
+  --blue: #3c90cc;
+  --red: #cd4b4b;
+  --yellow: #e8ec2f;
+  --darkblue: #2d6892;
+  --darkred: #8a3434;
+  --darkyellow: #b2b427;
+}
+
 * {
   margin: 0;
   padding: 0;
+  border: none;
   box-sizing: border-box;
-  color: white;
+  color: #222222;
+  font-size: large;
 }
 
 html {
-  background-color: rgb(221, 221, 221);
 }
