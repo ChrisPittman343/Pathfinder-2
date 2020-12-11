@@ -8,7 +8,10 @@ const Button = ({ children, ...props }) => {
     : "red-btn";
 
   return (
-    <button className={`animated-btn ${colorClass}`} onClick={props.onClick}>
+    <button
+      className={`animated-btn ${colorClass}`}
+      onClick={(e) => props.onClick(e)}
+    >
       {children}
     </button>
   );

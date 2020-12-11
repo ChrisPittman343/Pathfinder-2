@@ -2,19 +2,23 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "../../Button/Button";
 import "./ContentButtons.css";
+import Checkbox from "../../Checkbox/Checkbox";
 
 function ContentButtons(props) {
   return (
     <div className="main-content-btns-container">
-      <Button color="blue">Content Button</Button>
-      <Button color="red">Content Button</Button>
+      <Checkbox onCheckChange={props.toggleMultidirectional}>
+        Multi-directional
+      </Checkbox>
+      <Checkbox onCheckChange={props.toggleOctagonal}>Octagonal</Checkbox>
       <Button color="blue">Content Button</Button>
     </div>
   );
 }
 
 ContentButtons.propTypes = {
-  //Probably some booleans for settings, like bidirectional
+  toggleMultidirectional: PropTypes.func,
+  toggleOctagonal: PropTypes.func,
 };
 
 export default ContentButtons;

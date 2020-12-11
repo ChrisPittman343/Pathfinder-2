@@ -2,11 +2,12 @@
   --blue: #3c90cc;
   --red: #cd4b4b;
   --yellow: #e8ec2f;
-  --green: #2fb12b;
+  --green: #35c930;
   --darkblue: #2d6892;
   --darkred: #8a3434;
   --darkyellow: #b2b427;
   --darkgreen: #248120;
+  --black: #222222;
 }
 
 * {
@@ -14,10 +15,8 @@
   padding: 0;
   border: none;
   box-sizing: border-box;
-  color: #222222;
+  color: #000000;
   font-size: large;
   font-weight: bold;
-}
-
-html {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }

@@ -6,3 +6,51 @@
   height: 25px;
   border: 1px solid #d6d6d6;
 }
+
+.node-start {
+  background: var(--green) !important;
+  border-color: var(--darkgreen) !important;
+}
+
+.node-end {
+  background: var(--red) !important;
+  border-color: var(--darkred) !important;
+}
+
+.node-path {
+  border-color: var(--darkyellow) !important;
+  background: var(--yellow) !important;
+}
+
+.node-wall {
+  animation-name: wall;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes wall {
+  15% {
+    border-color: var(--black);
+    background: var(--black);
+  }
+  100% {
+    border-color: var(--black);
+    background: var(--black);
+  }
+}
+
+.node-visited {
+  animation-name: visited;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes visited {
+  45% {
+    background: var(--darkblue);
+  }
+  100% {
+    border-color: var(--darkblue);
+    background: var(--blue);
+  }
+}

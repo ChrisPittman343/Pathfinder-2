@@ -7,14 +7,20 @@ import Grid from "./Grid/Grid";
 const Content = (props) => {
   return (
     <div className="main-content-container">
-      <ContentButtons />
-      <Grid grid={props.grid} />
+      <ContentButtons
+        toggleOctagonal={props.toggleOctagonal}
+        toggleMultidirectional={props.toggleMultidirectional}
+      />
+      <Grid grid={props.grid} handleInteraction={props.handleInteraction} />
     </div>
   );
 };
 
 Content.propTypes = {
   grid: PropTypes.array,
+  handleInteraction: PropTypes.func,
+  toggleMultidirectional: PropTypes.func,
+  toggleOctagonal: PropTypes.func,
 };
 
 export default Content;

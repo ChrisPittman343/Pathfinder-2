@@ -6,21 +6,35 @@ import Visualize from "./Visualize/Visualize";
 import Dropdown from "../Dropdown/Dropdown";
 
 function NavBar(props) {
+  const changeAlgorithm = (key) => {};
+
+  const changePreset = (key) => {};
+
+  const changeSpeed = (key) => {};
+
   return (
-    <div className="main-navbar-container">
+    <nav className="main-navbar-container">
       <div id="navbar">
-        <Button color="red">Algorithms</Button>
-        <Button color="red">Presets</Button>
-        <Visualize onClick={(e) => console.log(e)} />
-        <Button color="yellow">Reset</Button>
-        <Dropdown opts={["Thing 1", "Thing 2222222222", "Thing 3"]} />
+        <Dropdown name="Algorithm" opts={["Dijkstra's", "A*", "D*", "Slug"]} />
+        <Dropdown
+          name="Preset"
+          opts={["Random Maze", "Horizontal Gaps", "Vertical Gaps"]}
+        />
+        <Visualize onClick={(e) => props.visualize()} />
+        <Button color="red" onClick={(e) => props.reset()}>
+          Reset
+        </Button>
+        <Dropdown name="Speed" opts={["Slow", "Medium", "Fast"]} />
       </div>
       <div id="yellow-stripe" />
       <div id="red-stripe" />
-    </div>
+    </nav>
   );
 }
 
-NavBar.propTypes = {};
+NavBar.propTypes = {
+  reset: PropTypes.func,
+  visualize: PropTypes.func,
+};
 
 export default NavBar;
