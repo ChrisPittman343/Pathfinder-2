@@ -11,7 +11,7 @@ function ContentButtons(props) {
         Multi-directional
       </Checkbox>
       <Checkbox onCheckChange={props.toggleOctagonal}>Octagonal</Checkbox>
-      <Button color="blue">Content Button</Button>
+      <Button color="blue">Weight Slider</Button>
     </div>
   );
 }

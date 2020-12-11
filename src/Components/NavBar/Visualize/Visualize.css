@@ -19,6 +19,7 @@
 }
 
 .visualize-btn:active {
+  position: relative;
   top: 3px;
   box-shadow: none;
 }

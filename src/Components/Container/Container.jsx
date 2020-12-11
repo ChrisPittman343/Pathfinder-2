@@ -2,18 +2,18 @@ import React, { Component } from "react";
 import "./Container.css";
 import Content from "../Content/Content";
 import NavBar from "../NavBar/NavBar";
-import algorithms from "../../Algorithms/Algorithms";
+import { algorithms, speeds } from "../../Constants/Constants";
 
 export default class Container extends Component {
   constructor(props) {
     super(props);
     this.state = {
       grid: [],
-      algorithm: algorithms[0],
+      algoIx: 0,
       currentWeight: Infinity,
       multidirectional: false,
       octal: false,
-      speed: 10,
+      speedLvl: 1,
     };
   }
 
@@ -42,21 +42,35 @@ export default class Container extends Component {
 
   //#region Navbar functions
 
+  /**
+   * Updates state's algorithm index
+   * @param {number} optIx Index of algorithm in constants list
+   */
   changeAlgorithm = (optIx) => {
-    this.setState({ algorithm: algorithms[optIx] });
+    this.setState({ algoIx: optIx });
   };
 
+  /**
+   * Updates state's preset
+   * @param {number} ix Index of preset in constants list
+   */
   changePreset = (ix) => {};
 
   reset = () => {
     this.setState({ grid: getInitialGrid() });
   };
 
-  changeSpeed = (lvl) => {};
+  /**
+   * Updates state's speed index
+   * @param {number} lvl Integer value of the speed level
+   */
+  changeSpeed = (lvl) => {
+    this.setState({ speedLvl: lvl });
+  };
 
   visualize = () => {
-    const { grid, octal, multidirectional, speed } = this.state;
-    const orderedNodes = this.state.algorithm(grid, 14, 10, {
+    const { grid, octal, multidirectional, speedLvl, algoIx } = this.state;
+    const orderedNodes = algorithms[algoIx](grid, 14, 10, {
       octal: octal,
       multidirectional: multidirectional,
     });
@@ -70,7 +84,7 @@ export default class Container extends Component {
         //this.setState({ grid: grid });
         document.getElementById(`node-${node.row}-${node.col}`).className +=
           " node-visited";
-      }, 200 + speed * i);
+      }, 100 + speeds[speedLvl] * i);
       i++;
     });
 
@@ -84,7 +98,7 @@ export default class Container extends Component {
           document.getElementById(`node-${node.row}-${node.col}`).className +=
             " node-path";
         },
-        200 + speed * i,
+        100 + speeds[speedLvl] * i,
         previousNode
       );
       previousNode = previousNode.previousNode;
@@ -94,11 +108,19 @@ export default class Container extends Component {
   //#endregion
 
   render() {
+    const { grid, algoIx, speedLvl } = this.state;
     return (
       <div className="main-container">
-        <NavBar reset={() => this.reset()} visualize={() => this.visualize()} />
+        <NavBar
+          initialState={[algoIx, 0, speedLvl]}
+          changeAlgorithm={this.changeAlgorithm}
+          changePreset={this.changePreset}
+          visualize={() => this.visualize()}
+          reset={this.reset}
+          changeSpeed={this.changeSpeed}
+        />
         <Content
-          grid={this.state.grid}
+          grid={grid}
           handleInteraction={this.handleInteraction}
           toggleMultidirectional={this.toggleMultidirectional}
           toggleOctagonal={this.toggleOctagonal}

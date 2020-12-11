@@ -28,7 +28,7 @@ function Dropdown(props) {
             return (
               <li key={optIx} className="dropdown-opt" accessKey={optIx}>
                 <Button
-                  color={optIx % 2 === 0 ? "yellow" : "red"}
+                  color={optIx === props.initialOpt ? "red" : "yellow"}
                   onClick={() => props.onOptChange(optIx)}
                 >
                   {opt}
@@ -47,6 +47,7 @@ function Dropdown(props) {
 Dropdown.propTypes = {
   name: PropTypes.string,
   opts: PropTypes.arrayOf(PropTypes.string),
+  initialOpt: PropTypes.number,
   onOptChange: PropTypes.func,
 };
 
