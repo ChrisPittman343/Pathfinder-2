@@ -14,10 +14,6 @@
   box-shadow: 0 3px var(--darkyellow);
 }
 
-.visualize-btn:focus {
-  outline: none;
-}
-
 .visualize-btn:active {
   position: relative;
   top: 3px;

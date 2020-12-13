@@ -1,5 +1,6 @@
 .main-grid-container {
   border: 1px solid #d6d6d6;
+  background: white;
   width: fit-content;
   margin: auto;
   border-collapse: collapse;

@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "../../Button/Button";
 import "./ContentButtons.css";
 import Checkbox from "../../Checkbox/Checkbox";
+import Flicker from "../../Flicker/Flicker";
 
 function ContentButtons(props) {
   return (
@@ -11,7 +11,20 @@ function ContentButtons(props) {
         Multi-directional
       </Checkbox>
       <Checkbox onCheckChange={props.toggleOctagonal}>Octagonal</Checkbox>
-      <Button color="blue">Weight Slider</Button>
+      <Flicker
+        onFlick={props.changeWeighting}
+        initialFlickerIx={3}
+        flickerValues={[2, 4, 8, Infinity]}
+      >
+        Wall Weight
+      </Flicker>
+      <Flicker
+        onFlick={props.changeNumEnds}
+        initialFlickerIx={0}
+        flickerValues={[1, 2, 3, 4, 5]}
+      >
+        Num Nodes
+      </Flicker>
     </div>
   );
 }
@@ -19,6 +32,8 @@ function ContentButtons(props) {
 ContentButtons.propTypes = {
   toggleMultidirectional: PropTypes.func,
   toggleOctagonal: PropTypes.func,
+  changeWeighting: PropTypes.func,
+  changeNumEnds: PropTypes.func,
 };
 
 export default ContentButtons;

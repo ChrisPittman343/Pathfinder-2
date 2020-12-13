@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./Container.css";
-import Content from "../Content/Content";
 import NavBar from "../NavBar/NavBar";
 import { algorithms, speeds } from "../../Constants/Constants";
+import ContentButtons from "../Content/ContentButtons/ContentButtons";
+import Grid from "../Content/Grid/Grid";
 
 export default class Container extends Component {
   constructor(props) {
@@ -10,10 +11,13 @@ export default class Container extends Component {
     this.state = {
       grid: [],
       algoIx: 0,
+      startNode: [14, 10],
+      endNodes: [[14, 51]],
+      draggingNode: null,
       currentWeight: Infinity,
       multidirectional: false,
       octal: false,
-      speedLvl: 1,
+      speedLvl: 2,
     };
   }
 
@@ -21,13 +25,71 @@ export default class Container extends Component {
     this.setState({ grid: getInitialGrid() });
   }
 
-  handleInteraction = (row, col) => {
+  /**
+   * Handles hovering/clicking of nodes
+   * @param {{row, col, weight, isStart, isEnd}} nodeProps
+   */
+  handleInteraction = (nodeProps) => {
     const { grid, currentWeight } = this.state;
+    const { row, col, isStart, isEnd, weight } = nodeProps;
     const newGrid = grid;
-    if (newGrid[row][col].isStart || newGrid[row][col].isEnd) return;
-    newGrid[row][col].weight =
-      newGrid[row][col].weight !== 1 ? 1 : currentWeight;
-    this.setState({ grid: newGrid });
+    if (!this.state.draggingNode) {
+      if (isStart || isEnd) {
+        this.setState({ draggingNode: nodeProps });
+      } else {
+        newGrid[row][col].weight = weight !== 1 ? 1 : currentWeight;
+        this.setState({ grid: newGrid });
+      }
+    }
+  };
+
+  /**
+   * Handles the dropping of a start/end node in another node
+   * @param {{row, col, weight, isStart, isEnd}} nodeProps Props of the drop location
+   */
+  dropNode = (nodeProps) => {
+    const { grid, draggingNode, endNodes } = this.state;
+    const newGrid = grid;
+
+    //Sets the node at the ORIGIN to be a new node
+    newGrid[draggingNode.row][draggingNode.col] = {
+      row: draggingNode.row,
+      col: draggingNode.col,
+      weight: 1,
+      isStart: false,
+      isEnd: false,
+      isVisited: false,
+    };
+
+    //Sets the node at the DESTINATION to reflect the props of the origin
+    newGrid[nodeProps.row][nodeProps.col] = {
+      row: nodeProps.row,
+      col: nodeProps.col,
+      weight: draggingNode.weight,
+      isStart: draggingNode.isStart,
+      isEnd: draggingNode.isEnd,
+      isVisited: false,
+    };
+
+    if (draggingNode.isStart)
+      this.setState({
+        grid: newGrid,
+        startNode: [nodeProps.row, nodeProps.col],
+        draggingNode: null,
+      });
+    else {
+      const newEndNodes = endNodes;
+      console.log(endNodes.indexOf([draggingNode.row, draggingNode.col]));
+      newEndNodes[endNodes.indexOf([draggingNode.row, draggingNode.col])] = [
+        nodeProps.row,
+        nodeProps.col,
+      ];
+      this.setState({
+        grid: newGrid,
+        endNodes: newEndNodes,
+        draggingNode: null,
+      });
+    }
   };
 
   //#region Content functions
@@ -37,6 +99,29 @@ export default class Container extends Component {
 
   toggleOctagonal = (bool) => {
     this.setState({ octal: bool });
+  };
+
+  changeWeighting = (weight) => {
+    this.setState({ currentWeight: weight });
+  };
+
+  /**
+   * Adds a new end node to the first possible node in the row of the 14th index (grid[14])
+   * Note: to reach this function, it is known that the operation is within the correct bounds
+   * @param {number} operation -1 or 1, which corresponds to removing or adding a node, respectively
+   */
+  changeNumEnds = (operation) => {
+    let newEnds = this.state.endNodes;
+    if (operation === -1) {
+      newEnds = newEnds.slice(0, newEnds.length - 2);
+    } else if (operation === 1) {
+      let i;
+      while (!this.state.grid[14][i].isEnd || !this.state.grid[14][i].isStart)
+        i++;
+      const newEnd = this.state.grid[14][i];
+      newEnds.push([newEnd.row, newEnd.col]);
+    }
+    this.setState({ endNodes: newEnds });
   };
   //#endregion
 
@@ -69,8 +154,15 @@ export default class Container extends Component {
   };
 
   visualize = () => {
-    const { grid, octal, multidirectional, speedLvl, algoIx } = this.state;
-    const orderedNodes = algorithms[algoIx](grid, 14, 10, {
+    const {
+      grid,
+      octal,
+      multidirectional,
+      speedLvl,
+      algoIx,
+      startNode,
+    } = this.state;
+    const orderedNodes = algorithms[algoIx](grid, startNode[0], startNode[1], {
       octal: octal,
       multidirectional: multidirectional,
     });
@@ -108,9 +200,10 @@ export default class Container extends Component {
   //#endregion
 
   render() {
-    const { grid, algoIx, speedLvl } = this.state;
+    const { grid, algoIx, speedLvl, draggingNode } = this.state;
     return (
       <div className="main-container">
+        <div id="background" />
         <NavBar
           initialState={[algoIx, 0, speedLvl]}
           changeAlgorithm={this.changeAlgorithm}
@@ -119,12 +212,20 @@ export default class Container extends Component {
           reset={this.reset}
           changeSpeed={this.changeSpeed}
         />
-        <Content
-          grid={grid}
-          handleInteraction={this.handleInteraction}
-          toggleMultidirectional={this.toggleMultidirectional}
-          toggleOctagonal={this.toggleOctagonal}
-        />
+        <div className="main-content-container">
+          <ContentButtons
+            toggleOctagonal={this.toggleOctagonal}
+            toggleMultidirectional={this.toggleMultidirectional}
+            changeWeighting={this.changeWeighting}
+            changeNumEnds={this.changeNumEnds}
+          />
+          <Grid
+            grid={grid}
+            draggingNode={draggingNode}
+            handleDrop={this.dropNode}
+            handleInteraction={this.handleInteraction}
+          />
+        </div>
         {/* Modals go here? */}
       </div>
     );
@@ -136,17 +237,21 @@ const getInitialGrid = () => {
   for (let i = 0; i < 29; i++) {
     const row = [];
     for (let k = 0; k < 61; k++) {
-      const node = {
-        row: i,
-        col: k,
-        weight: 1,
-        isStart: i === 14 && k === 10,
-        isEnd: i === 14 && k === 51,
-        isVisited: false,
-      };
+      const node = newNode(i, k);
       row.push(node);
     }
     grid.push(row);
   }
   return grid;
+};
+
+const newNode = (i, k) => {
+  return {
+    row: i,
+    col: k,
+    weight: 1,
+    isStart: i === 14 && k === 10,
+    isEnd: i === 14 && k === 51,
+    isVisited: false,
+  };
 };

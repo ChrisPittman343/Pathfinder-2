@@ -5,3 +5,19 @@
   width: 100%;
   min-height: 100vh;
 }
+
+#background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background-image: url(../../path-background.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  height: 100vh;
+}
+
+.main-content-container {
+  width: 100%;
+}

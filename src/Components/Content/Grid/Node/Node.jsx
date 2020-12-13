@@ -3,25 +3,27 @@ import PropTypes from "prop-types";
 import "./Node.css";
 
 function Node(props) {
-  const { row, col, weight, isStart, isEnd, isVisited } = props;
-  const extraClass = () => {
-    return isStart
-      ? "node-start"
-      : isEnd
-      ? "node-end"
-      : weight === Infinity
-      ? "node-wall"
-      : weight !== 0
-      ? `node-w${weight}`
-      : "";
-  };
+  const { row, col, weight, isStart, isEnd, isVisited, isDragging } = props;
+  const extraClass = isStart
+    ? "node-start"
+    : isEnd
+    ? "node-end"
+    : weight === Infinity
+    ? "node-wall"
+    : weight !== 0
+    ? `node-w${weight}`
+    : "";
+  const visitedClass = isVisited ? "node-visited" : "";
+
+  const dragClass = isDragging ? "node-possible-drop" : "";
 
   return (
     <td
       id={`node-${row}-${col}`}
-      onMouseDown={() => props.onMouseDown(row, col)}
-      onMouseEnter={() => props.onMouseEnter(row, col)}
-      className={`node ${extraClass()} ${isVisited ? "node-visited" : ""}`}
+      onMouseDown={() => props.onMouseDown(props)}
+      onMouseEnter={() => props.onMouseEnter(props)}
+      onMouseUp={() => props.onMouseUp(props)}
+      className={`node ${extraClass} ${visitedClass} ${dragClass}`}
     ></td>
   );
 }
@@ -33,6 +35,7 @@ Node.propTypes = {
   isStart: PropTypes.bool,
   isEnd: PropTypes.bool,
   isVisited: PropTypes.bool,
+  isDragging: PropTypes.bool,
 };
 
 export default Node;

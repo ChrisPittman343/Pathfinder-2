@@ -6,8 +6,8 @@ import "./Grid.css";
 function Grid(props) {
   const [mousePressed, setMousePressed] = useState(false);
 
-  const handleInteraction = (row, col) => {
-    props.handleInteraction(row, col);
+  const handleInteraction = (nodeProps) => {
+    props.handleInteraction(nodeProps);
   };
 
   return (
@@ -25,22 +25,27 @@ function Grid(props) {
                 return (
                   <Node
                     key={`node-${rowIx}-${colIx}`}
+                    isDragging={props.draggingNode !== null}
                     row={rowIx}
                     col={colIx}
                     weight={col.weight}
                     isStart={col.isStart}
                     isEnd={col.isEnd}
                     isVisited={col.isVisited}
-                    onMouseDown={(row, col) => {
-                      handleInteraction(row, col);
+                    onMouseDown={(nodeProps) => {
+                      handleInteraction(nodeProps);
                     }}
-                    onMouseEnter={(row, col) => {
+                    onMouseEnter={(nodeProps) => {
                       if (!mousePressed) return;
-                      else handleInteraction(row, col);
+                      else handleInteraction(nodeProps);
+                    }}
+                    onMouseUp={(nodeProps) => {
+                      if (props.draggingNode !== null)
+                        props.handleDrop(nodeProps);
                     }}
                   />
                 );
-              })}{" "}
+              })}
             </tr>
           );
         })}
@@ -51,6 +56,8 @@ function Grid(props) {
 
 Grid.propTypes = {
   grid: PropTypes.array,
+  draggingNode: PropTypes.object,
+  handleDrop: PropTypes.func,
   handleInteraction: PropTypes.func,
 };
 

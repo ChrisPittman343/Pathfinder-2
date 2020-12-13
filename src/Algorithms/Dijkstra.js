@@ -27,11 +27,8 @@ export function dijkstra(
     const node = nodeQueue.shift();
     if (node.weight === Infinity || node.isStart || node.isVisited) continue;
     else exploredNodes.push(node);
-
     grid[node.row][node.col].isVisited = true;
-    if (node.isEnd) {
-      break;
-    }
+    if (node.isEnd) break;
     if (!opts.octal) nodeQueue.push(...exploreNeighbors(grid, node));
     else nodeQueue.push(...exploreNeighbors_octagonal(grid, node));
   }

@@ -7,7 +7,7 @@
 .check-box {
   width: 25px;
   height: 25px;
-  margin: 0 12px 0 0;
+  margin-left: 12px;
   border: 1px solid black;
   border-radius: 3px;
   background: rgb(255, 255, 255);

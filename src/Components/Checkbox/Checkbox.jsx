@@ -13,13 +13,13 @@ const Checkbox = ({ children, ...props }) => {
 
   return (
     <div className="checkbox-container">
-      <div className="check-box ">
-        <img className="check-img" src={checked ? check : x} />
-      </div>
       <div className="checkbox-btn">
         <Button color="blue" onClick={() => setChecked(!checked)}>
           {children}
         </Button>
+      </div>
+      <div className="check-box ">
+        <img className="check-img" src={checked ? check : x} />
       </div>
     </div>
   );

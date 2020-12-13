@@ -50,10 +50,6 @@
   box-shadow: 0 2px var(--darkgreen);
 }
 
-.animated-btn:focus {
-  outline: none;
-}
-
 .animated-btn:active {
   position: relative;
   top: 3px;

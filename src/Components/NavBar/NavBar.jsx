@@ -33,8 +33,9 @@ function NavBar(props) {
           onOptChange={props.changeSpeed}
         />
       </div>
+      {/*
       <div id="yellow-stripe" />
-      <div id="red-stripe" />
+      <div id="red-stripe" /> */}
     </nav>
   );
 }
