@@ -13,7 +13,6 @@ const Flicker = (props) => {
       if (flickerIx >= props.flickerValues.length - 1) return;
       setFlickerIx(flickerIx + 1);
     }
-    console.log(props);
     props.onFlick(operation);
   };
 
@@ -21,21 +20,23 @@ const Flicker = (props) => {
     <div className="flicker-container">
       <div className="flicker-main">
         <button
-          className="flicker-left"
+          className="flicker-btn flicker-left"
           onClick={() => handleFlickerChange(-1)}
         >
           -
         </button>
         <div className="flicker-middle">{props.children}</div>
         <button
-          className="flicker-right"
+          className="flicker-btn flicker-right"
           onClick={() => handleFlickerChange(1)}
         >
           +
         </button>
       </div>
       <div className="flicker-value-display">
-        {props.flickerValues[flickerIx]}
+        {props.flickerValues[flickerIx] === Infinity
+          ? "∞"
+          : props.flickerValues[flickerIx]}
       </div>
     </div>
   );

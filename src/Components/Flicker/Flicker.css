@@ -5,42 +5,57 @@
 
 .flicker-main {
   display: flex;
-  height: 25px;
+  height: 35px;
+  text-align: center;
 }
 
 .flicker-value-display {
   height: 25px;
-  padding: 0 5px;
-  min-width: 20px;
-  margin-left: 8px;
+  width: 25px;
+  margin-left: 12px;
   border-radius: 3px;
   background: rgb(255, 255, 255);
   border: 1px solid black;
-  box-shadow: 0 3px var(--black);
+  text-align: center;
 }
 
 .flicker-btn {
-  size: 20px 20px;
+  width: 35px;
+  height: 35px;
+}
+
+.flicker-btn:hover {
+  background: var(--darkblue);
+  cursor: pointer;
+}
+
+.flicker-btn .flicker-left {
+  background: var(--blue);
+  border-radius: 3px 0 0 3px;
 }
 
 .flicker-left {
   background: var(--blue);
-
-  width: 25px;
-  height: 25px;
   border-radius: 3px 0 0 3px;
+  border: 3px solid var(--darkblue);
+  border-right: none;
+  border-right: 1px solid var(--darkblue);
 }
 
 .flicker-right {
   background: var(--blue);
-
-  width: 25px;
-  height: 25px;
   border-radius: 0 3px 3px 0;
+  border: 3px solid var(--darkblue);
+  border-left: none;
+  border-left: 1px solid var(--darkblue);
 }
 
 .flicker-middle {
   background: var(--blue);
-
-  padding: 0 5px;
+  padding: 0 7px;
+  padding-top: 4px;
+  cursor: default;
+  border: 3px solid var(--darkblue);
+  border-left: none;
+  border-right: none;
 }

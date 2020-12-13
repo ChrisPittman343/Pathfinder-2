@@ -4,17 +4,17 @@
   min-height: 60px;
   margin-bottom: 20px;
   display: flex;
-  border-bottom: 2px solid var(--darkblue);
+  border-bottom: 4px solid var(--darkblue);
 }
 
 #navbar {
-  width: 75%;
+  width: 60%;
   font-size: 22px;
   margin: auto;
   display: flex;
   align-items: center;
 
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 #yellow-stripe {

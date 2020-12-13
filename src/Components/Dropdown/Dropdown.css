@@ -6,22 +6,13 @@
   border-radius: 3px;
   padding: 5px;
   background-color: var(--red);
-  box-shadow: 0 3px var(--darkred);
+  border: 3px solid var(--darkred);
   cursor: pointer;
 }
 
-/* Seems unnecessary, too many effects on hover with the expand 
- .dropdown-selected:hover {
-  position: relative;
-  top: 1px;
-  box-shadow: 0 2px var(--darkred);
+div:hover > .dropdown-selected {
+  border-radius: 3px 3px 3px 0;
 }
-
-.dropdown:hover > .dropdown-selected {
-  position: relative;
-  top: 1px;
-  box-shadow: 0 2px var(--darkred);
-} */
 
 .dropdown-text {
   font-size: 22px;
@@ -36,10 +27,10 @@
 
 .dropdown-options-menu {
   z-index: 10;
-  border: 2px solid var(--darkblue);
+  border: 2px solid var(--black);
   border-radius: 0 5px 5px 5px;
   padding: 5px;
-  background: var(--blue);
+  background: var(--darkblue);
   position: absolute;
   list-style: none;
 }

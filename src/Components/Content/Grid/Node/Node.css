@@ -23,24 +23,12 @@
 }
 
 .node-possible-drop:hover {
-  border: 3px solid #9b9b9b;
+  border: 3px solid #d6d6d6;
 }
 
 .node-wall {
-  animation-name: wall;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes wall {
-  15% {
-    border-color: var(--black);
-    background: var(--black);
-  }
-  100% {
-    border-color: var(--black);
-    background: var(--black);
-  }
+  border-color: var(--black);
+  background: var(--black);
 }
 
 .node-visited {
@@ -50,9 +38,11 @@
 }
 
 @keyframes visited {
-  45% {
-    background: var(--darkblue);
+  50% {
+    background: rgb(12, 126, 219);
+    border-color: rgb(19, 103, 199);
   }
+
   100% {
     border-color: var(--darkblue);
     background: var(--blue);

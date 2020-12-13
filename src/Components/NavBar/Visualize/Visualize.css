@@ -5,17 +5,9 @@
   font-size: 30px;
   cursor: pointer;
   background: var(--yellow);
-  box-shadow: 0 4px var(--darkyellow);
+  border: 3px solid var(--darkyellow);
 }
 
 .visualize-btn:hover {
-  position: relative;
-  top: 1px;
-  box-shadow: 0 3px var(--darkyellow);
-}
-
-.visualize-btn:active {
-  position: relative;
-  top: 3px;
-  box-shadow: none;
+  background: var(--darkyellow);
 }

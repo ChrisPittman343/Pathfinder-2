@@ -7,51 +7,28 @@
 }
 
 .red-btn {
+  border: 3px solid var(--darkred);
   background: var(--red);
-  box-shadow: 0 3px var(--darkred);
 }
 
 .red-btn:hover {
-  position: relative;
-  top: 1px;
-  box-shadow: 0 2px var(--darkred);
+  background: var(--darkred);
 }
 
 .yellow-btn {
+  border: 3px solid var(--darkyellow);
   background: var(--yellow);
-  box-shadow: 0 3px var(--darkyellow);
 }
 
 .yellow-btn:hover {
-  position: relative;
-  top: 1px;
-  box-shadow: 0 2px var(--darkyellow);
+  background: var(--darkyellow);
 }
 
 .blue-btn {
+  border: 3px solid var(--darkblue);
   background: var(--blue);
-  box-shadow: 0 3px var(--darkblue);
 }
 
 .blue-btn:hover {
-  position: relative;
-  top: 1px;
-  box-shadow: 0 2px var(--darkblue);
-}
-
-.green-btn {
-  background: var(--green);
-  box-shadow: 0 3px var(--darkgreen);
-}
-
-.green-btn:hover {
-  position: relative;
-  top: 1px;
-  box-shadow: 0 2px var(--darkgreen);
-}
-
-.animated-btn:active {
-  position: relative;
-  top: 3px;
-  box-shadow: none;
+  background: var(--darkblue);
 }

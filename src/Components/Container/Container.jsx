@@ -112,16 +112,19 @@ export default class Container extends Component {
    */
   changeNumEnds = (operation) => {
     let newEnds = this.state.endNodes;
+    let newGrid = this.state.grid;
     if (operation === -1) {
       newEnds = newEnds.slice(0, newEnds.length - 2);
     } else if (operation === 1) {
-      let i;
-      while (!this.state.grid[14][i].isEnd || !this.state.grid[14][i].isStart)
+      let i = 30;
+      while (this.state.grid[14][i].isEnd || this.state.grid[14][i].isStart) {
         i++;
+      }
       const newEnd = this.state.grid[14][i];
       newEnds.push([newEnd.row, newEnd.col]);
+      //newGrid[newEnd.row][newEnd.col] = ;
     }
-    this.setState({ endNodes: newEnds });
+    this.setState({ grid: newGrid, endNodes: newEnds });
   };
   //#endregion
 

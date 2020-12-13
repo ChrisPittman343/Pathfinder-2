@@ -26,7 +26,7 @@ function Dropdown(props) {
         <ul className="dropdown-options-menu">
           {props.opts.map((opt, optIx) => {
             return (
-              <li key={optIx} className="dropdown-opt" accessKey={optIx}>
+              <li key={optIx} className="dropdown-opt">
                 <Button
                   color={optIx === props.initialOpt ? "red" : "yellow"}
                   onClick={() => props.onOptChange(optIx)}

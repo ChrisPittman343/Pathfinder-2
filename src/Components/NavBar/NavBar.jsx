@@ -22,7 +22,10 @@ function NavBar(props) {
           initialOpt={props.initialState[1]}
           onOptChange={props.changePreset}
         />
-        <Visualize onClick={() => props.visualize()} />
+        <Visualize
+          currentAlgorithm={algorithmNames[props.initialState[0]]}
+          onClick={() => props.visualize()}
+        />
         <Button color="red" onClick={() => props.reset()}>
           Reset
         </Button>
