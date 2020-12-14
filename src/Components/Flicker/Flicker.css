@@ -25,19 +25,13 @@
 }
 
 .flicker-btn:hover {
-  background: var(--darkblue);
+  background: var(--slightlydarkerblue);
   cursor: pointer;
-}
-
-.flicker-btn .flicker-left {
-  background: var(--blue);
-  border-radius: 3px 0 0 3px;
 }
 
 .flicker-left {
   background: var(--blue);
   border-radius: 3px 0 0 3px;
-  border: 3px solid var(--darkblue);
   border-right: none;
   border-right: 1px solid var(--darkblue);
 }
@@ -45,7 +39,6 @@
 .flicker-right {
   background: var(--blue);
   border-radius: 0 3px 3px 0;
-  border: 3px solid var(--darkblue);
   border-left: none;
   border-left: 1px solid var(--darkblue);
 }
@@ -53,9 +46,8 @@
 .flicker-middle {
   background: var(--blue);
   padding: 0 7px;
-  padding-top: 4px;
+  padding-top: 7px;
   cursor: default;
-  border: 3px solid var(--darkblue);
   border-left: none;
   border-right: none;
 }

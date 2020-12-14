@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Container.css";
 import NavBar from "../NavBar/NavBar";
-import { algorithms, speeds } from "../../Constants/Constants";
+import { algorithms, speeds, weights } from "../../Constants/Constants";
 import ContentButtons from "../Content/ContentButtons/ContentButtons";
 import Grid from "../Content/Grid/Grid";
 
@@ -14,7 +14,7 @@ export default class Container extends Component {
       startNode: [14, 10],
       endNodes: [[14, 51]],
       draggingNode: null,
-      currentWeight: Infinity,
+      currentWeightIx: 3,
       multidirectional: false,
       octal: false,
       speedLvl: 2,
@@ -30,14 +30,14 @@ export default class Container extends Component {
    * @param {{row, col, weight, isStart, isEnd}} nodeProps
    */
   handleInteraction = (nodeProps) => {
-    const { grid, currentWeight } = this.state;
+    const { grid, currentWeightIx } = this.state;
     const { row, col, isStart, isEnd, weight } = nodeProps;
     const newGrid = grid;
     if (!this.state.draggingNode) {
       if (isStart || isEnd) {
         this.setState({ draggingNode: nodeProps });
       } else {
-        newGrid[row][col].weight = weight !== 1 ? 1 : currentWeight;
+        newGrid[row][col].weight = weight !== 1 ? 1 : weights[currentWeightIx];
         this.setState({ grid: newGrid });
       }
     }
@@ -101,8 +101,9 @@ export default class Container extends Component {
     this.setState({ octal: bool });
   };
 
-  changeWeighting = (weight) => {
-    this.setState({ currentWeight: weight });
+  //Right now, weight = +-1, must be related to index
+  changeWeighting = (operation) => {
+    this.setState({ currentWeightIx: this.state.currentWeightIx + operation });
   };
 
   /**
@@ -122,7 +123,8 @@ export default class Container extends Component {
       }
       const newEnd = this.state.grid[14][i];
       newEnds.push([newEnd.row, newEnd.col]);
-      //newGrid[newEnd.row][newEnd.col] = ;
+      newGrid[newEnd.row][newEnd.col].weight = 1;
+      newGrid[newEnd.row][newEnd.col].isEnd = true;
     }
     this.setState({ grid: newGrid, endNodes: newEnds });
   };
@@ -145,7 +147,13 @@ export default class Container extends Component {
   changePreset = (ix) => {};
 
   reset = () => {
-    this.setState({ grid: getInitialGrid() });
+    this.setState({
+      grid: getInitialGrid(),
+      algoIx: 0,
+      speedLvl: 2,
+      startNode: [14, 10],
+      endNodes: [[14, 51]],
+    });
   };
 
   /**
@@ -193,7 +201,7 @@ export default class Container extends Component {
           document.getElementById(`node-${node.row}-${node.col}`).className +=
             " node-path";
         },
-        100 + speeds[speedLvl] * i,
+        150 + speeds[speedLvl] * i,
         previousNode
       );
       previousNode = previousNode.previousNode;

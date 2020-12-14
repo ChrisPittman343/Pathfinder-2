@@ -5,9 +5,9 @@
   font-size: 30px;
   cursor: pointer;
   background: var(--yellow);
-  border: 3px solid var(--darkyellow);
+  min-width: 320px;
 }
 
 .visualize-btn:hover {
-  background: var(--darkyellow);
+  background: var(--slightlydarkeryellow);
 }

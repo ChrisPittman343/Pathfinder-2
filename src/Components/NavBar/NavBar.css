@@ -4,7 +4,6 @@
   min-height: 60px;
   margin-bottom: 20px;
   display: flex;
-  border-bottom: 4px solid var(--darkblue);
 }
 
 #navbar {
@@ -13,7 +12,6 @@
   margin: auto;
   display: flex;
   align-items: center;
-
   justify-content: space-between;
 }
 

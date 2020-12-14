@@ -1,5 +1,6 @@
 :root {
-  --blue: #3698df;
+  /* OLD COLOR SCHEME
+  --blue: #366cdf;
   --red: #e95151;
   --yellow: #fcff35;
   --green: #3ce036;
@@ -7,7 +8,27 @@
   --darkred: #b44444;
   --darkyellow: #c6c931;
   --darkgreen: #33b32e;
-  --black: #222222;
+  */
+  --white: #ffffff;
+  --gray: #b8b8b8;
+  --darkgray: #a0a0a0;
+  --green: #06d64b;
+  --red: #f83361;
+  --slightlydarkerred: #ec2e5a;
+  --yellow: #ffc53c;
+  --slightlydarkeryellow: #ecb637;
+  --darkblue: #073b4c;
+  --blue: #28a4ce;
+  --slightlydarkerblue: #2698be;
+  --paleviolet: #8966b1;
+  --violet: #7e2add;
+  --black: #161616;
+  --w2: #00ffdd;
+  --w2border: #00e2d7;
+  --w4: #002fff;
+  --w4border: #000fe6;
+  --w8: #6200ff;
+  --w8border: #4e00ca;
 }
 
 * {
@@ -15,10 +36,16 @@
   padding: 0;
   border: none;
   box-sizing: border-box;
-  color: #000000;
+  color: var(--black);
   font-size: large;
   font-weight: bold;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+html {
+  background-color: var(--gray);
 }
 
 button:focus {

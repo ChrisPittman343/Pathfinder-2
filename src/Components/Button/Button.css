@@ -1,34 +1,23 @@
 .animated-btn {
   border: none;
   border-radius: 3px;
-  padding: 5px 5px;
+  padding: 7px;
   font-size: inherit;
   cursor: pointer;
 }
 
 .red-btn {
-  border: 3px solid var(--darkred);
   background: var(--red);
 }
 
 .red-btn:hover {
-  background: var(--darkred);
-}
-
-.yellow-btn {
-  border: 3px solid var(--darkyellow);
-  background: var(--yellow);
-}
-
-.yellow-btn:hover {
-  background: var(--darkyellow);
+  background: var(--slightlydarkerred);
 }
 
 .blue-btn {
-  border: 3px solid var(--darkblue);
   background: var(--blue);
 }
 
 .blue-btn:hover {
-  background: var(--darkblue);
+  background: var(--slightlydarkerblue);
 }

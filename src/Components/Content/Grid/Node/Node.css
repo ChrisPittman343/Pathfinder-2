@@ -4,31 +4,47 @@
   margin: 0;
   width: 25px;
   height: 25px;
-  border: 1px solid #d6d6d6;
+  background-color: var(--white);
+  border: 1px solid var(--gray);
 }
 
 .node-start {
   background: var(--green) !important;
-  border-color: var(--darkgreen) !important;
+  border-color: var(--green) !important;
 }
 
 .node-end {
   background: var(--red) !important;
-  border-color: var(--darkred) !important;
+  border-color: var(--red) !important;
 }
 
 .node-path {
-  border-color: var(--darkyellow) !important;
+  border-color: var(--yellow) !important;
   background: var(--yellow) !important;
 }
 
 .node-possible-drop:hover {
-  border: 3px solid #d6d6d6;
+  border: 3px solid var(--darkgray);
 }
 
 .node-wall {
   border-color: var(--black);
   background: var(--black);
+}
+
+.node-w2 {
+  border-color: var(--w2border);
+  background: var(--w2);
+}
+
+.node-w4 {
+  border-color: var(--w4border);
+  background: var(--w4);
+}
+
+.node-w8 {
+  border-color: var(--w8border);
+  background: var(--w8);
 }
 
 .node-visited {
@@ -38,13 +54,12 @@
 }
 
 @keyframes visited {
-  50% {
-    background: rgb(12, 126, 219);
-    border-color: rgb(19, 103, 199);
+  30% {
+    border-color: var(--violet);
+    background: var(--paleviolet);
   }
-
   100% {
-    border-color: var(--darkblue);
+    border-color: var(--slightlydarkerblue);
     background: var(--blue);
   }
 }
